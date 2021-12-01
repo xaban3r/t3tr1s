@@ -1,0 +1,9 @@
+﻿<Application x:Class="t3tr1s.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:t3tr1s"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <FontFamily x:Key="FontAwesome">/Font/fontawesome-webfront.ttf#FontAwesome</FontFamily>
+    </Application.Resources>
+</Application>

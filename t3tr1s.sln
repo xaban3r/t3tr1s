@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "t3tr1s", "t3tr1s.csproj", "{FC448821-55EC-4775-BA3B-AB353372170F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "..\Logic\Logic.csproj", "{3270165C-9295-4E98-82B7-7D66B58052B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC448821-55EC-4775-BA3B-AB353372170F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC448821-55EC-4775-BA3B-AB353372170F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC448821-55EC-4775-BA3B-AB353372170F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC448821-55EC-4775-BA3B-AB353372170F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3270165C-9295-4E98-82B7-7D66B58052B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3270165C-9295-4E98-82B7-7D66B58052B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3270165C-9295-4E98-82B7-7D66B58052B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3270165C-9295-4E98-82B7-7D66B58052B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {276E97CE-14D4-4655-BCD0-16356D506BEE}
+	EndGlobalSection
+EndGlobal
