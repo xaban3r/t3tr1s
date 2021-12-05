@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
-using Logic;
+//using Logic;
 
 
 namespace t3tr1s
@@ -23,6 +23,8 @@ namespace t3tr1s
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        
         private void vkButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://vk.com/bestpointguard");
