@@ -1,35 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Media;
 
-
-namespace Logic
+namespace t3tr1s
 {
     class Figure
     {
         public List<FieldElement> elements { get; } = new List<FieldElement>();              // свойство
 
-        private readonly List<Color> color = new List<Color> { Color.Red, Color.Yellow, Color.Green, Color.Blue };
-        private readonly Random random = new Random();                                                                       
-                                                                                        
-        public void SetRandomColor()                                                                            
-        {                                                                                           
-            int i = random.Next(0, color.Count);                                                
-            Color col = color[i];                                                                           
+        private readonly List<Color> color = new List<Color> { Colors.Red, Colors.Yellow, Colors.Green, Colors.Blue };
+        private readonly Random random = new Random();
+
+        public void SetRandomColor()
+        {
+            int i = random.Next(0, color.Count);
+            Color col = color[i];
             elements.ForEach(element => element.color = col);                         // читается как переходит в 
-        }                                                                                                       
-        public void SetColor(Color color)                                                   
-        {                                                                                           
-            elements.ForEach(element => element.color = color);                                     
-        }                                                                                               
-                                                                                                
-        bool move { get; set; }                                                                     
-        public Figure() { move = true; }                                                                
-                                                                                            
-        /*==========================================*/                                                          
-        /*обработка движений и столкновений*/                                                                   
-                                                                                                        
+        }
+        public void SetColor(Color color)
+        {
+            elements.ForEach(element => element.color = color);
+        }
+
+        bool move { get; set; }
+        public Figure() { move = true; }
+
+        /*==========================================*/
+        /*обработка движений и столкновений*/
+
         public bool RightMove(List<FieldElement> listOfFallenElements)                       // метод .Exists(Predicate<T> pr)  (существует ли элемент)
         {                                                                                    // с помощью лямбда-выражения проходиться по элементам листа
             //move = true;                                                                   // и возвращает последний элемент, координата х которого является
@@ -44,10 +45,10 @@ namespace Logic
         }
 
 
-        public bool LeftMove(List<FieldElement> listOfFallenElements)                      
-        {                                                                                   
+        public bool LeftMove(List<FieldElement> listOfFallenElements)
+        {
             //move = true;                                                                 
-            if (!elements.Exists(element => (element.x - 1) < 0))                
+            if (!elements.Exists(element => (element.x - 1) < 0))
             {
                 if (!listOfFallenElements.Exists(lofe => elements.Exists(element => (element.x - 1) == lofe.x && element.y == lofe.y)))
                 {

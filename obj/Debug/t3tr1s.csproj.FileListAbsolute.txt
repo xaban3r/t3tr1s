@@ -35,3 +35,4 @@ C:\Users\xaban3r\source\repos\tetris\obj\Debug\t3tr1s.csproj.CoreCompileInputs.c
 C:\Users\xaban3r\source\repos\tetris\obj\Debug\t3tr1s.csproj.CopyComplete
 C:\Users\xaban3r\source\repos\tetris\obj\Debug\t3tr1s.exe
 C:\Users\xaban3r\source\repos\tetris\obj\Debug\t3tr1s.pdb
+C:\Users\xaban3r\source\repos\tetris\obj\Debug\t3tr1s.csprojAssemblyReference.cache
