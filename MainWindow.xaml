@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:t3tr1s"
         xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="800">
+        Title="MainWindow" Height="720" Width="800"
+         Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="Button" x:Key="RoundButton">
             <Style.Resources>
@@ -45,7 +46,7 @@
             </StackPanel>
 
             <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Grid  DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="mainGrid" ShowGridLines="False" Background="White"  >
+                <Grid  DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="mainGrid" ShowGridLines="False" Background="GhostWhite"  >
 
                 </Grid>
             </DockPanel>
@@ -96,7 +97,7 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
-        <Grid Grid.Column="2" Margin="2">
+        <Grid Grid.Column="2" Margin="2" x:Name="nextGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0,675*"/>
                 <RowDefinition Height="0,125*" />

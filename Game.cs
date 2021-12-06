@@ -19,6 +19,7 @@ namespace t3tr1s
 
         private readonly Random random = new Random();
 
-
+        private List<FieldElement> AllEllements = new List<FieldElement>();
+        public List<FieldElement> GetAllEllements() { return AllEllements; }
     }
 }
