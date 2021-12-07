@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
-//using Logic;
 
 
 namespace t3tr1s
@@ -40,7 +39,7 @@ namespace t3tr1s
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GridCreate();
-            NewGame();
+            //NewGame();
         }
 
    
@@ -67,9 +66,7 @@ namespace t3tr1s
                     {                                                               // Размер содержимого изменяется, чтобы заполнить размеры назначения.
                         Stretch = Stretch.Fill                                      // Соотношение сторон не сохраняется.
                     };
-                    Thickness ts = new Thickness(1);
-                    // rectangle.Margin = new Thickness(1);
-                    rectangle.Margin = ts;
+                    rectangle.Margin = new Thickness(1);
                     rectangle.Fill = new SolidColorBrush(Colors.Black);
                     Grid.SetColumn(rectangle, j);
                     Grid.SetRow(rectangle, i);
@@ -77,31 +74,42 @@ namespace t3tr1s
                     rectangles[i].Add(rectangle);
                 }
             }
-            /*
-             * ЭТО НУЖНО ЗАСУНУТЬ С НЕКСТ И В ХОЛД 
-             * 
-             * 
-            for (int i = 0; i < 4; i++)
+
+            for (int i = 0; i < nextAndHoldGridSize; i++)
             {
                 nextRectangles.Add(new List<Rectangle>());
-                for (int j = 0; j <4; j++)
+                for (int j = 0; j < nextAndHoldGridSize; j++)
                 {
                     rectangle = new Rectangle
                     {                                                               // Размер содержимого изменяется, чтобы заполнить размеры назначения.
                         Stretch = Stretch.Fill                                      // Соотношение сторон не сохраняется.
                     };
-                    Thickness ts = new Thickness(4);
-                    // rectangle.Margin = new Thickness(1);
-                    rectangle.Margin = ts;
+                    rectangle.Margin = new Thickness(1);
                     rectangle.Fill = new SolidColorBrush(Colors.Black);
                     Grid.SetColumn(rectangle, j);
                     Grid.SetRow(rectangle, i);
-                    mainGrid.Children.Add(rectangle);
+                    gridNext.Children.Add(rectangle);
                     nextRectangles[i].Add(rectangle);
                 }
-
             }
-            */
+
+            for (int i = 0; i < 4; i++)
+            {
+                holdRectangles.Add(new List<Rectangle>());
+                for (int j = 0; j < 4; j++)
+                {
+                    rectangle = new Rectangle
+                    {                                                               // Размер содержимого изменяется, чтобы заполнить размеры назначения.
+                        Stretch = Stretch.Fill                                      // Соотношение сторон не сохраняется.
+                    };
+                    rectangle.Margin = new Thickness(1);
+                    rectangle.Fill = new SolidColorBrush(Colors.Black);
+                    Grid.SetColumn(rectangle, j);
+                    Grid.SetRow(rectangle, i);
+                    gridHold.Children.Add(rectangle);
+                    holdRectangles[i].Add(rectangle);
+                }
+            }
         }
 
         private void NewGame()
@@ -122,7 +130,7 @@ namespace t3tr1s
         private void DrawingTheGame()
         {
             rectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.Blue)));
-            //nextRectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.Blue)));
+            nextRectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.Blue)));
         }
        
 
@@ -145,7 +153,7 @@ namespace t3tr1s
 
         private void gitHubButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("https://vk.com/bestpointguard");
+            Process.Start("https://github.com/xaban3r/t3tr1s");
         }
 
         private void tgButton_Click(object sender, RoutedEventArgs e)

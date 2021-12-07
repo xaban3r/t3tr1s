@@ -7,10 +7,10 @@ using System.Windows.Media;
 
 namespace t3tr1s
 {
-    class Figure
+    public class Figure
     {
         public List<FieldElement> elements { get; } = new List<FieldElement>();              // свойство
-
+        //public List<FieldElement> Elements => elements;
         private readonly List<Color> color = new List<Color> { Colors.Red, Colors.Yellow, Colors.Green, Colors.Blue };
         private readonly Random random = new Random();
 

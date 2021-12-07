@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace t3tr1s
 {
-    class FieldElement //клеточка в таблице (из которой так же состоят фигуры)
+    public class FieldElement //клеточка в таблице (из которой так же состоят фигуры)
     {
         public int x { get; set; }
         public int y { get; set; }
