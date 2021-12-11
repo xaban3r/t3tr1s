@@ -155,7 +155,7 @@
             <!-- Click="Button_Click" -->
             <Button Style="{DynamicResource RightSideButton}" Focusable="False" Name="buttonPause" Content="Pause" Grid.Row="2" ></Button>
             <!--Click="btnPause_Click" -->
-            <Button Style="{DynamicResource RightSideButton}" Grid.Row="1" Name="buttonStartGame"   FontWeight="Bold" FontSize="16" Focusable="False" Content="Start the Game"></Button>
+            <Button Style="{DynamicResource RightSideButton}" Grid.Row="1" Name="buttonStartGame" Click="StartTheGame_Click"  FontWeight="Bold" FontSize="16" Focusable="False" Content="Start the Game"></Button>
             <!--Click="btnNewGame_Click" -->
 
         </Grid>

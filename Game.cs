@@ -55,7 +55,7 @@ namespace t3tr1s
 
         private void CreateNewNextFigure()
         {
-            Random random = new Random();
+            /*Random random = new Random();
             switch (7)   //switch (random.Next(0, 7))
             {
                /* case 0:
@@ -92,14 +92,14 @@ namespace t3tr1s
                     {
                         nextFigure = new FigureS();
                         break;
-                    }*/
+                    }
                 case 7:
                     {
                         nextFigure = new FigureO();
                         break;
                     }
-            }
-            //nextFigure = new FigureO();
+            }*/
+            nextFigure = new FigureO();
             nextFigure.Generate(Columns / 2, 0) ;
         }
         
@@ -108,7 +108,7 @@ namespace t3tr1s
         {
             if (GetFigure != null)
                 //AllEllements.Add(figure.Elements.ForEach(el => (el.ForEach => (elem = figure.Elements)));
-                AllEllements.AddRange(figure.Elements);
+                AllEllements.AddRange(figure.Elements);   //ЛИБО ЗДЕСЬ ОШИБКА
 
             //need to check rows function
 

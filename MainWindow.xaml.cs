@@ -40,7 +40,7 @@ namespace t3tr1s
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GridCreate();
-            NewGame();
+           // NewGame();
         }
 
    
@@ -68,7 +68,7 @@ namespace t3tr1s
                         Stretch = Stretch.Fill                                      // Соотношение сторон не сохраняется.
                     };
                     rectangle.Margin = new Thickness(1);
-                    rectangle.Fill = new SolidColorBrush(Colors.Black);
+                    rectangle.Fill = new SolidColorBrush(Colors.White);
                     Grid.SetColumn(rectangle, j);
                     Grid.SetRow(rectangle, i);
                     mainGrid.Children.Add(rectangle);
@@ -86,7 +86,7 @@ namespace t3tr1s
                         Stretch = Stretch.Fill                                      // Соотношение сторон не сохраняется.
                     };
                     rectangle.Margin = new Thickness(1);
-                    rectangle.Fill = new SolidColorBrush(Colors.Black);
+                    rectangle.Fill = new SolidColorBrush(Colors.White);
                     Grid.SetColumn(rectangle, j);
                     Grid.SetRow(rectangle, i);
                     gridNext.Children.Add(rectangle);
@@ -94,17 +94,17 @@ namespace t3tr1s
                 }
             }
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < nextAndHoldGridSize; i++)
             {
                 holdRectangles.Add(new List<Rectangle>());
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < nextAndHoldGridSize; j++)
                 {
                     rectangle = new Rectangle
                     {                                                               // Размер содержимого изменяется, чтобы заполнить размеры назначения.
                         Stretch = Stretch.Fill                                      // Соотношение сторон не сохраняется.
                     };
                     rectangle.Margin = new Thickness(1);
-                    rectangle.Fill = new SolidColorBrush(Colors.Black);
+                    rectangle.Fill = new SolidColorBrush(Colors.White);
                     Grid.SetColumn(rectangle, j);
                     Grid.SetRow(rectangle, i);
                     gridHold.Children.Add(rectangle);
@@ -119,7 +119,7 @@ namespace t3tr1s
             game = new Game();
             DrawingTheGame();
             game.StartTheGame();
-            DrawingTheGame();
+            //DrawingTheGame();
             game.ThreadMoveDown += gameThread;
         }
 
@@ -139,10 +139,10 @@ namespace t3tr1s
             nextRectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.White)));
             holdRectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.White)));
             game.GetAllEllements().ForEach(el => { DrawOne(el.x, el.y, el.color); });
-           /* if (!game.isEndGame)
+            if (!game.isEndGame)
             {
                 game.GetFigure.Elements.ForEach(el => { DrawOne(el.x, el.y, el.color); });
-            }*/
+            }/*ERRORS HERE*/
             //draw next();
         }
        
@@ -187,6 +187,10 @@ namespace t3tr1s
         }
         
         /*===========================================================================================*/
+        private void StartTheGame_Click(object sender, RoutedEventArgs e)
+        {
+            NewGame();
+        }
         private void vkButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://vk.com/bestpointguard");
