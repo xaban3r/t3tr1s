@@ -9,8 +9,8 @@ namespace t3tr1s
 {
     public class Figure
     {
-        public List<FieldElement> elements { get; } = new List<FieldElement>();              // свойство
-        //public List<FieldElement> Elements => elements;
+        private List<FieldElement> elements  = new List<FieldElement>();              
+        public List<FieldElement> Elements { get { return elements; } }             // свойство
         private readonly List<Color> color = new List<Color> { Colors.Red, Colors.Yellow, Colors.Green, Colors.Blue };
         private readonly Random random = new Random();
 
@@ -27,6 +27,12 @@ namespace t3tr1s
 
         bool move { get; set; }
         public Figure() { move = true; }
+
+
+
+        public virtual void Generate(int x, int y) { }
+
+
 
         /*==========================================*/
         /*обработка движений и столкновений*/
@@ -77,6 +83,13 @@ namespace t3tr1s
         /*
          * НАДО ОПИСАТЬ ROTATE
          */
+
+
+
+        public bool Collision(List<FieldElement> listOfFallenElements)
+        {
+            return (listOfFallenElements.Exists(lofe => elements.Exists(el => el.x == lofe.x && el.y == lofe.y)));
+        }
 
 
     }

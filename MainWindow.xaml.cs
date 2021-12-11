@@ -23,7 +23,8 @@ namespace t3tr1s
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly static int nextAndHoldGridSize = 4;
+       // readonly static int nextAndHoldGridSize = 4;
+        const int nextAndHoldGridSize = 4;
         private Game game = new Game();
         private Rectangle rectangle = new Rectangle();
         private List<List<Rectangle>> rectangles = new List<List<Rectangle>>(Game.Columns);
@@ -39,7 +40,7 @@ namespace t3tr1s
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GridCreate();
-            //NewGame();
+            NewGame();
         }
 
    
@@ -117,34 +118,74 @@ namespace t3tr1s
             game = null;
             game = new Game();
             DrawingTheGame();
-
+            game.StartTheGame();
+            DrawingTheGame();
+            game.ThreadMoveDown += gameThread;
         }
 
-
-
-
-
-
+        void gameThread()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                KeyDownMethod(Key.Down);
+            });
+        }
 
         
+
         private void DrawingTheGame()
         {
-            rectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.Blue)));
-            nextRectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.Blue)));
+            rectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.White)));
+            nextRectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.White)));
+            holdRectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.White)));
+            game.GetAllEllements().ForEach(el => { DrawOne(el.x, el.y, el.color); });
+           /* if (!game.isEndGame)
+            {
+                game.GetFigure.Elements.ForEach(el => { DrawOne(el.x, el.y, el.color); });
+            }*/
+            //draw next();
         }
        
+        private void DrawOne(int x, int y, Color color)
+        {
+            rectangles[y][x].Fill = new SolidColorBrush(color);
+        }
 
 
 
+        private void KeyDownMethod(Key key)
+        {
+            if (game.isEndGame)
+            {
+                return;
+            }
+            switch (key)
+            {
 
-
-
-
-
-
-
-
-
+                case Key.Left:
+                    {
+                        game.LeftMove();
+                        break;
+                    }
+                case Key.Right:
+                    {
+                        game.RightMove();
+                        break;
+                    }
+                case Key.Down:
+                    {
+                        game.DownMove();
+                        break;
+                    }
+                    /* case Key.Up:
+                         {
+                             game.Rotate();
+                             break;
+                         }*/
+            }
+            DrawingTheGame();
+        }
+        
         /*===========================================================================================*/
         private void vkButton_Click(object sender, RoutedEventArgs e)
         {
@@ -160,7 +201,6 @@ namespace t3tr1s
         {
             Process.Start("https://t.me/bestpointguard");
         }
-
 
         
     }
