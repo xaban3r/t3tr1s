@@ -40,7 +40,7 @@ namespace t3tr1s
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GridCreate();
-           // NewGame();
+            //NewGame();
         }
 
    
@@ -117,9 +117,9 @@ namespace t3tr1s
         {
             game = null;
             game = new Game();
-            DrawingTheGame();
-            game.StartTheGame();
             //DrawingTheGame();
+            game.StartTheGame();
+            DrawingTheGame();
             game.ThreadMoveDown += gameThread;
         }
 
@@ -142,7 +142,7 @@ namespace t3tr1s
             if (!game.isEndGame)
             {
                 game.GetFigure.Elements.ForEach(el => { DrawOne(el.x, el.y, el.color); });
-            }/*ERRORS HERE*/
+            }
             //draw next();
         }
        

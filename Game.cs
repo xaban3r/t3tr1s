@@ -26,8 +26,6 @@ namespace t3tr1s
         public delegate void MoveDown();
         public event MoveDown ThreadMoveDown;
 
-        /*public static readonly int Rows = 20;
-        public static readonly int Columns = 10;*/
         public const int Rows = 20;
         public const int Columns = 10;
 
@@ -38,8 +36,8 @@ namespace t3tr1s
         {
             while (true)
             {
-                if (isEndGame) 
-                    thread.Abort(); 
+                if (isEndGame)
+                    thread.Abort();
                 if (!isPause)
                     ThreadMoveDown?.Invoke(); //if (ThreadMoveDown != null) { ThreadMoveDown(); }
                 Thread.Sleep(1000);
@@ -49,9 +47,13 @@ namespace t3tr1s
         public void StartTheGame()
         {
             AddNewFigure();
-            thread = new Thread(ThMoveDown);
+            thread = new Thread(ThMoveDown)
+            {
+                IsBackground = false
+            };
+            thread.Start();
         }
-        
+
 
         private void CreateNewNextFigure()
         {
@@ -100,9 +102,9 @@ namespace t3tr1s
                     }
             }*/
             nextFigure = new FigureO();
-            nextFigure.Generate(Columns / 2, 0) ;
+            nextFigure.Generate(Columns / 2, 0);
         }
-        
+
 
         public void AddNewFigure()
         {
@@ -152,16 +154,4 @@ namespace t3tr1s
             thread.Abort();
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

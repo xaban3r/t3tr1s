@@ -7,7 +7,7 @@
         xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="800"
-         Loaded="Window_Loaded">
+        Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="Button" x:Key="RoundButton">
             <Style.Resources>
@@ -40,13 +40,13 @@
             <ColumnDefinition Width="0,600*" />
             <ColumnDefinition Width="0,200*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+        <DockPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <StackPanel Margin="0,2,2,2" DockPanel.Dock="Top" Orientation="Horizontal">
                 <!--TextBlock Name="txtLabel" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock-->
             </StackPanel>
 
             <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Grid  DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="mainGrid" ShowGridLines="False" Background="GhostWhite"  >
+                <Grid  DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="mainGrid" ShowGridLines="False" Background="Black"  >
 
                 </Grid>
             </DockPanel>
@@ -116,7 +116,7 @@
                     </Style>
                 </StackPanel.Resources>
                 <TextBlock Text="NEXT" Foreground="White" HorizontalAlignment="Center"></TextBlock>
-                <Grid  Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowGridLines="False" x:Name="gridNext" Background="White"  >
+                <Grid  Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowGridLines="False" x:Name="gridNext" Background="Black"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -131,11 +131,11 @@
                     </Grid.RowDefinitions>
                 </Grid>
                 <TextBlock Text="HOLD &lt;SHIFT&gt;" Foreground="White" HorizontalAlignment="Center"></TextBlock>
-                <Grid  Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowGridLines="False" x:Name="gridHold" Background="White"  >
+                <Grid  Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowGridLines="False" x:Name="gridHold" Background="Black"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="37.6"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>

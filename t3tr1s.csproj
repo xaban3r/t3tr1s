@@ -75,7 +75,6 @@
     <Compile Include="Figures\FigureS.cs" />
     <Compile Include="Figures\FigureT.cs" />
     <Compile Include="Figures\FigureZ.cs" />
-    <Compile Include="Figures\IFigure.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
