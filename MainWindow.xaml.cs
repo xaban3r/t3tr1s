@@ -151,7 +151,10 @@ namespace t3tr1s
             rectangles[y][x].Fill = new SolidColorBrush(color);
         }
 
-
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeyDownMethod(e.Key);
+        }
 
         private void KeyDownMethod(Key key)
         {

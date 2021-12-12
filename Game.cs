@@ -57,10 +57,10 @@ namespace t3tr1s
 
         private void CreateNewNextFigure()
         {
-            /*Random random = new Random();
-            switch (7)   //switch (random.Next(0, 7))
+            Random random = new Random();
+            switch (random.Next(0, 6))   
             {
-               /* case 0:
+                case 0:
                     {
                         nextFigure = new FigureO();
                         break;
@@ -95,13 +95,7 @@ namespace t3tr1s
                         nextFigure = new FigureS();
                         break;
                     }
-                case 7:
-                    {
-                        nextFigure = new FigureO();
-                        break;
-                    }
-            }*/
-            nextFigure = new FigureO();
+            }
             nextFigure.Generate(Columns / 2, 0);
         }
 
