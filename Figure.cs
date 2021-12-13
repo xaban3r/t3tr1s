@@ -70,21 +70,74 @@ namespace t3tr1s
         {
             if (!elements.Exists(element => (element.y + 1) == Game.Rows))
             {
-                if (!listOfFallenElements.Exists(lofe => elements.Exists(element => (element.y + 1) == lofe.y && element.x == lofe.x)))
+                if (listOfFallenElements.Exists(lofe => elements.Exists(element => (element.y + 1) == lofe.y && element.x == lofe.x)))
+                    move = false;
+                else
                 {
                     elements.ForEach(element => element.y++);
                     move = true;
-                }
-                else move = false;
+                }                    
             }
             else move = false;
 
             return move;
+
+
         }
 
-        /*
-         * НАДО ОПИСАТЬ ROTATE
-         */
+
+        public bool Rotate(List<FieldElement> listOfElements)
+        {
+            List<FieldElement> testElements = new List<FieldElement>(elements.Count());
+
+            int xMax = (elements.Max(el => el.x));
+            int yMax = (elements.Max(el => el.y));
+            int xMin = (elements.Min(el => el.x));
+            int yMin = (elements.Min(el => el.y));
+            int xlenth = xMax - xMin + 1;
+            int ylenth = yMax - yMin + 1;
+            //     int xMaxMove = xlenth / 2;
+            //     int yMaxMove = ylenth / 2;
+
+            if (xlenth > ylenth) xMin++;
+            if (ylenth > xlenth) xMin--;
+
+            foreach (FieldElement el in elements)
+            {
+                testElements.Add(new FieldElement(Math.Abs(el.y - yMax) + xMin, (el.x - xMin) + yMin, el.color));
+            }
+
+            if (!(listOfElements.Exists(lo => testElements.Exists(el => (el.y == lo.y && el.x == lo.x) || el.x < 0 || el.y < 0 || el.x >= Game.Columns || el.y >= Game.Rows || el.y < 0 || el.x < 0))))
+            {
+                elements.Clear();
+                elements.AddRange(testElements);
+            }
+            return true;
+           /* List<FieldElement> testElements = new List<FieldElement>(elements.Count());
+            int xMax = elements.Max(el => el.x);
+            int yMax = elements.Max(el => el.y);
+            int xMin = (elements.Min(el => el.x));
+            int yMin = (elements.Min(el => el.y));
+            int xlength = xMax - xMin;
+            int ylength = yMax - yMin;
+
+            //     int xMaxMove = xlenth / 2;
+            //     int yMaxMove = ylenth / 2;
+
+            int me = (xlength > ylength) ? xlength + 1 : ylength + 1;
+
+            foreach (FieldElement el in elements)
+            {
+                testElements.Add(new FieldElement(el.y, 1 - (el.x - (me - 2)), el.color));
+            }
+
+            if (!(listOfElements.Exists(lo => testElements.Exists(el => (el.y == lo.y && el.x == lo.x) || el.x < 0 || el.y < 0 || el.x >= Game.Columns || el.y >= Game.Rows || el.y < 0 || el.x < 0))))
+            {
+                elements.Clear();
+                elements.AddRange(testElements);
+            }
+            return true;*/
+        }
 
 
 

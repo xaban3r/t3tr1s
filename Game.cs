@@ -25,7 +25,7 @@ namespace t3tr1s
 
         public delegate void MoveDown();
         public event MoveDown ThreadMoveDown;
-
+        private const int timeout = 1000;
         public const int Rows = 20;
         public const int Columns = 10;
 
@@ -40,7 +40,7 @@ namespace t3tr1s
                     thread.Abort();
                 if (!isPause)
                     ThreadMoveDown?.Invoke(); //if (ThreadMoveDown != null) { ThreadMoveDown(); }
-                Thread.Sleep(1000);
+                Thread.Sleep(timeout);
             }
         }
 
@@ -102,13 +102,13 @@ namespace t3tr1s
 
         public void AddNewFigure()
         {
-            if (GetFigure != null)
+            if (figure != null)
                 //AllEllements.Add(figure.Elements.ForEach(el => (el.ForEach => (elem = figure.Elements)));
                 AllEllements.AddRange(figure.Elements);   //ЛИБО ЗДЕСЬ ОШИБКА
 
             //need to check rows function
 
-            if (GetNextFigure == null)
+            if (nextFigure == null)
                 CreateNewNextFigure();
 
             figure = nextFigure;
@@ -141,6 +141,11 @@ namespace t3tr1s
             {
                 AddNewFigure();
             }
+        }
+        public void Rotate()
+        {
+            if (isPause) return;
+            figure.Rotate(GetAllEllements());
         }
 
         public void EndGame()

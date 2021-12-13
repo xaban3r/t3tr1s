@@ -25,7 +25,8 @@ namespace t3tr1s
     {
        // readonly static int nextAndHoldGridSize = 4;
         const int nextAndHoldGridSize = 4;
-        private Game game = new Game();
+        //const int timeout = 1000;
+        private Game game;
         private Rectangle rectangle = new Rectangle();
         private List<List<Rectangle>> rectangles = new List<List<Rectangle>>(Game.Columns);
         private List<List<Rectangle>> nextRectangles = new List<List<Rectangle>>(nextAndHoldGridSize);
@@ -148,7 +149,12 @@ namespace t3tr1s
        
         private void DrawOne(int x, int y, Color color)
         {
-            rectangles[y][x].Fill = new SolidColorBrush(color);
+            try
+            {
+                rectangles[y][x].Fill = new SolidColorBrush(color);
+            }
+            catch (ArgumentOutOfRangeException)
+            { }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -180,13 +186,31 @@ namespace t3tr1s
                         game.DownMove();
                         break;
                     }
-                    /* case Key.Up:
-                         {
-                             game.Rotate();
-                             break;
-                         }*/
+                case Key.Up:
+                    {
+                        game.Rotate();
+                        break;
+                    }
             }
             DrawingTheGame();
+        }
+
+        private void DrawNext()
+        {
+            List<FieldElement> next = game.GetNextFigure.Elements;
+            int minX = next.Min(p => p.x);
+            int minY = next.Min(p => p.y);
+            int maxX = next.Max(p => p.x);
+            int maxY = next.Max(p => p.y);
+            int coefX = minX;
+            int coefY = 0;
+            if ((maxX - minX) < 3) coefX -= 1;
+            if ((maxY - minY) < 3) coefY += 1;
+            foreach (FieldElement el in next)
+            {
+                nextRectangles[el.y + coefY][el.x - coefX].Fill = new SolidColorBrush(el.color);
+            }
+
         }
         
         /*===========================================================================================*/
