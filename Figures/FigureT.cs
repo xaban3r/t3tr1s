@@ -12,7 +12,7 @@ namespace t3tr1s.Figures
         public override void Generate(int x, int y)
         {
             x--;
-            y--;
+            y++;
             Elements.Add(new FieldElement(x - 1, y));
             Elements.Add(new FieldElement(x, y));
             Elements.Add(new FieldElement(x + 1, y));

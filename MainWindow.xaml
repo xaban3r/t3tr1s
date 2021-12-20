@@ -9,6 +9,7 @@
         Title="MainWindow" Height="720" Width="800"
         Loaded="Window_Loaded"
         KeyDown="Window_KeyDown">
+        
     <Window.Resources>
         <Style TargetType="Button" x:Key="RoundButton">
             <Style.Resources>
@@ -65,10 +66,10 @@
 
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Score" Foreground="White" HorizontalAlignment="Center" FontSize="25" />
-            <Label Grid.Row="0" Foreground="White" x:Name="scoreLabel" Content="0" HorizontalContentAlignment="Center" FontSize="35" VerticalContentAlignment="Center"/>
+            <TextBlock Grid.Row="0" Foreground="White" x:Name="score"  FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <TextBlock Grid.Row="1" Foreground="White" Text="Level" HorizontalAlignment="Center" FontSize="25" />
-            <Label Grid.Row="1" Foreground="White" x:Name="lvlLabel" Content="0" HorizontalContentAlignment="Center" FontSize="35" VerticalContentAlignment="Center"/>
+            <TextBlock Grid.Row="0" Foreground="White" x:Name="level"  FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <TextBlock Grid.Row="2" Foreground="White" Text="Player" HorizontalAlignment="Center" FontSize="25" />
             <TextBlock Grid.Row="2" Foreground="White" x:Name="nicknameLabel" TextWrapping="Wrap" Text="sh1" TextAlignment="Center" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center" Height="60" Margin="10,33.4,10.2,9.8" Width="135"/>
@@ -154,7 +155,7 @@
 
             <Button Style="{DynamicResource RightSideButton}" Focusable="False" Grid.Row="3" Content="Information"></Button>
             <!-- Click="Button_Click" -->
-            <Button Style="{DynamicResource RightSideButton}" Focusable="False" Name="buttonPause" Content="Pause" Grid.Row="2" ></Button>
+            <Button Style="{DynamicResource RightSideButton}" Focusable="False" Name="buttonPause" Content="Pause" Grid.Row="2" Click="Pause_Click"></Button>
             <!--Click="btnPause_Click" -->
             <Button Style="{DynamicResource RightSideButton}" Grid.Row="1" Name="buttonStartGame" Click="StartTheGame_Click"  FontWeight="Bold" FontSize="16" Focusable="False" Content="Start the Game"></Button>
             <!--Click="btnNewGame_Click" -->

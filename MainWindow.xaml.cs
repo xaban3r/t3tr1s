@@ -23,9 +23,7 @@ namespace t3tr1s
     /// </summary>
     public partial class MainWindow : Window
     {
-       // readonly static int nextAndHoldGridSize = 4;
         const int nextAndHoldGridSize = 4;
-        //const int timeout = 1000;
         private Game game;
         private Rectangle rectangle = new Rectangle();
         private List<List<Rectangle>> rectangles = new List<List<Rectangle>>(Game.Columns);
@@ -40,14 +38,9 @@ namespace t3tr1s
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            GridCreate();
-            //NewGame();
+            GridCreate();;
         }
 
-   
-
-
-       
         private void GridCreate()
         {
             for (int i = 0; i<Game.Columns; i++)
@@ -116,9 +109,11 @@ namespace t3tr1s
 
         private void NewGame()
         {
+            score.Text = "0";
+            level.Text = "0";
             game = null;
             game = new Game();
-            //DrawingTheGame();
+ 
             game.StartTheGame();
             DrawingTheGame();
             game.ThreadMoveDown += gameThread;
@@ -132,8 +127,6 @@ namespace t3tr1s
             });
         }
 
-        
-
         private void DrawingTheGame()
         {
             rectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.White)));
@@ -144,7 +137,7 @@ namespace t3tr1s
             {
                 game.GetFigure.Elements.ForEach(el => { DrawOne(el.x, el.y, el.color); });
             }
-            //draw next();
+            DrawNext();
         }
        
         private void DrawOne(int x, int y, Color color)
@@ -193,6 +186,8 @@ namespace t3tr1s
                     }
             }
             DrawingTheGame();
+            score.Text = game.Score.ToString();
+           // level.Text = game.Lvl.ToString();
         }
 
         private void DrawNext()
@@ -208,9 +203,8 @@ namespace t3tr1s
             if ((maxY - minY) < 3) coefY += 1;
             foreach (FieldElement el in next)
             {
-                nextRectangles[el.y + coefY][el.x - coefX].Fill = new SolidColorBrush(el.color);
+                    nextRectangles[el.y + coefY][el.x - coefX].Fill = new SolidColorBrush(el.color);
             }
-
         }
         
         /*===========================================================================================*/
@@ -218,21 +212,25 @@ namespace t3tr1s
         {
             NewGame();
         }
+        private void Pause_Click(object sender, RoutedEventArgs e)
+        {
+            //maybe focus
+            if (game.isPause) 
+                game.isPause = false;
+            else
+                game.isPause = true;
+        }
         private void vkButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://vk.com/bestpointguard");
         }
-
         private void gitHubButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://github.com/xaban3r/t3tr1s");
         }
-
         private void tgButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://t.me/bestpointguard");
         }
-
-        
     }
 }

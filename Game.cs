@@ -15,6 +15,7 @@ namespace t3tr1s
         public int Lvl { get; private set; } = 0;
         public bool isEndGame { get; private set; } = false;
         public bool isPause { get; set; }
+        private Random random = new Random();
         private Thread thread;
         private Figure figure;
         private Figure nextFigure;
@@ -25,7 +26,7 @@ namespace t3tr1s
 
         public delegate void MoveDown();
         public event MoveDown ThreadMoveDown;
-        private const int timeout = 1000;
+        private int timeout = 1000;
         public const int Rows = 20;
         public const int Columns = 10;
 
@@ -40,6 +41,7 @@ namespace t3tr1s
                     thread.Abort();
                 if (!isPause)
                     ThreadMoveDown?.Invoke(); //if (ThreadMoveDown != null) { ThreadMoveDown(); }
+                   
                 Thread.Sleep(timeout);
             }
         }
@@ -54,11 +56,10 @@ namespace t3tr1s
             thread.Start();
         }
 
-
+       
         private void CreateNewNextFigure()
         {
-            Random random = new Random();
-            switch (random.Next(0, 6))   
+            switch (random.Next(0, 7))
             {
                 case 0:
                     {
@@ -102,22 +103,63 @@ namespace t3tr1s
 
         public void AddNewFigure()
         {
-            if (figure != null)
-                //AllEllements.Add(figure.Elements.ForEach(el => (el.ForEach => (elem = figure.Elements)));
-                AllEllements.AddRange(figure.Elements);   //ЛИБО ЗДЕСЬ ОШИБКА
 
-            //need to check rows function
+            if (figure != null)
+                AllEllements.AddRange(figure.Elements);
+
+            DeleteRows();
 
             if (nextFigure == null)
+            { 
                 CreateNewNextFigure();
+                random.Next(0, 7);
+            }
 
             figure = nextFigure;
 
             if (figure.Collision(GetAllEllements()))
                 isEndGame = true;
-
+            
             CreateNewNextFigure();
         }
+
+
+
+        private void DeleteRows()
+        {
+            List<FieldElement> deleteElements = new List<FieldElement>();
+            int delRows = 0;
+            for (int i = 0; i < Game.Rows; i++)
+            {                                                                           //Объект IEnumerable<T>, содержащий элементы входной последовательности, которые удовлетворяют условию.
+                deleteElements = AllEllements.Where(el => el.y == i).ToList();          //Объект IEnumerable<T>, подлежащий фильтрации. predicate Func<TSource, Boolean>  Функция для проверки каждого элемента на соответствие условию.
+                if (deleteElements.Count() == Game.Columns)
+                {
+                    deleteElements.ForEach(el => AllEllements.Remove(el));
+                    AllEllements.ForEach(el => { if (el.y < i) el.y++; });
+                    delRows++;
+                }
+            }
+            ScoreBonus(delRows);
+        }
+        private void ScoreBonus(int rowsCounter)
+        {
+            switch (rowsCounter)
+            {
+                case 1:
+                    Score += 10;
+                    break;
+                case 2:
+                    Score += 30;
+                    break;
+                case 3:
+                    Score += 60;
+                    break;
+                case 4:
+                    Score += 100;
+                    break;
+            }
+        }
+
 
         /*=========MOVES=========*/
 
@@ -152,5 +194,8 @@ namespace t3tr1s
         {
             thread.Abort();
         }
+
+
+
     }
 }

@@ -96,8 +96,6 @@ namespace t3tr1s
             int yMin = (elements.Min(el => el.y));
             int xlenth = xMax - xMin + 1;
             int ylenth = yMax - yMin + 1;
-            //     int xMaxMove = xlenth / 2;
-            //     int yMaxMove = ylenth / 2;
 
             if (xlenth > ylenth) xMin++;
             if (ylenth > xlenth) xMin--;
@@ -113,16 +111,13 @@ namespace t3tr1s
                 elements.AddRange(testElements);
             }
             return true;
-           /* List<FieldElement> testElements = new List<FieldElement>(elements.Count());
+            /*List<FieldElement> testElements = new List<FieldElement>(elements.Count());
             int xMax = elements.Max(el => el.x);
             int yMax = elements.Max(el => el.y);
             int xMin = (elements.Min(el => el.x));
             int yMin = (elements.Min(el => el.y));
             int xlength = xMax - xMin;
             int ylength = yMax - yMin;
-
-            //     int xMaxMove = xlenth / 2;
-            //     int yMaxMove = ylenth / 2;
 
             int me = (xlength > ylength) ? xlength + 1 : ylength + 1;
 
@@ -138,14 +133,12 @@ namespace t3tr1s
             }
             return true;*/
         }
-
+        
 
 
         public bool Collision(List<FieldElement> listOfFallenElements)
         {
             return (listOfFallenElements.Exists(lofe => elements.Exists(el => el.x == lofe.x && el.y == lofe.y)));
         }
-
-
     }
 }
