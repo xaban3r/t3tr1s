@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using t3tr1s.Figures;
 
 namespace t3tr1s
@@ -55,7 +56,6 @@ namespace t3tr1s
             };
             thread.Start();
         }
-
        
         private void CreateNewNextFigure()
         {
@@ -100,7 +100,6 @@ namespace t3tr1s
             nextFigure.Generate(Columns / 2, 0);
         }
 
-
         public void AddNewFigure()
         {
 
@@ -123,8 +122,6 @@ namespace t3tr1s
             CreateNewNextFigure();
         }
 
-
-
         private void DeleteRows()
         {
             List<FieldElement> deleteElements = new List<FieldElement>();
@@ -139,26 +136,36 @@ namespace t3tr1s
                     delRows++;
                 }
             }
-            ScoreBonus(delRows);
+           ScoreBonus(delRows);
         }
+
         private void ScoreBonus(int rowsCounter)
         {
             switch (rowsCounter)
             {
                 case 1:
-                    Score += 10;
-                    break;
-                case 2:
-                    Score += 30;
-                    break;
-                case 3:
-                    Score += 60;
-                    break;
-                case 4:
                     Score += 100;
                     break;
+                case 2:
+                    Score += 300;
+                    break;
+                case 3:
+                    Score += 700;
+                    break;
+                case 4:
+                    Score += 1500;
+                    break;
             }
+            if (Score >= (Lvl + 1) * 1500) NewLevel();
+            //if (Score >= 100) NewLevel();
         }
+
+        private void NewLevel()
+        {
+            Lvl++;
+            timeout = (int)(timeout * 0.7F);
+        }
+
 
 
         /*=========MOVES=========*/
@@ -194,8 +201,5 @@ namespace t3tr1s
         {
             thread.Abort();
         }
-
-
-
     }
 }

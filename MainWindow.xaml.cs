@@ -13,14 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
-
+using System.Windows.Threading;
 
 namespace t3tr1s
 {
-    
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         const int nextAndHoldGridSize = 4;
@@ -29,6 +25,7 @@ namespace t3tr1s
         private List<List<Rectangle>> rectangles = new List<List<Rectangle>>(Game.Columns);
         private List<List<Rectangle>> nextRectangles = new List<List<Rectangle>>(nextAndHoldGridSize);
         private List<List<Rectangle>> holdRectangles = new List<List<Rectangle>>(nextAndHoldGridSize);
+        private DispatcherTimer Timer = new DispatcherTimer();
 
 
         public MainWindow()
@@ -117,6 +114,7 @@ namespace t3tr1s
             game.StartTheGame();
             DrawingTheGame();
             game.ThreadMoveDown += gameThread;
+            DispatcherTimer();
         }
 
         void gameThread()
@@ -185,9 +183,9 @@ namespace t3tr1s
                         break;
                     }
             }
-            DrawingTheGame();
             score.Text = game.Score.ToString();
-           // level.Text = game.Lvl.ToString();
+            DrawingTheGame();
+            level.Text = game.Lvl.ToString();
         }
 
         private void DrawNext()
@@ -206,7 +204,19 @@ namespace t3tr1s
                     nextRectangles[el.y + coefY][el.x - coefX].Fill = new SolidColorBrush(el.color);
             }
         }
-        
+
+        private void DispatcherTimer()
+        {
+            Timer.Interval = TimeSpan.FromMilliseconds(1);
+            Timer.Tick += Timer_Tick;
+            Timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            timer.Text = DateTime.Now.ToString("mm:ss.fff");
+        }
+
         /*===========================================================================================*/
         private void StartTheGame_Click(object sender, RoutedEventArgs e)
         {
@@ -231,6 +241,10 @@ namespace t3tr1s
         private void tgButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://t.me/bestpointguard");
+        }
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            game.EndGame();
         }
     }
 }

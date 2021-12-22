@@ -8,8 +8,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="800"
         Loaded="Window_Loaded"
-        KeyDown="Window_KeyDown">
-        
+        KeyDown="Window_KeyDown"
+        Closing="Window_Closing"
+        >
+
     <Window.Resources>
         <Style TargetType="Button" x:Key="RoundButton">
             <Style.Resources>
@@ -46,36 +48,28 @@
             <StackPanel Margin="0,2,2,2" DockPanel.Dock="Top" Orientation="Horizontal">
                 <!--TextBlock Name="txtLabel" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock-->
             </StackPanel>
-
             <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid  DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="mainGrid" ShowGridLines="False" Background="Black"  >
 
                 </Grid>
             </DockPanel>
-
-
         </DockPanel >
         <Grid Grid.Column="0" Margin="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0,150*"/>
                 <RowDefinition Height="0,150*" />
-                <RowDefinition Height="0,150*" />
-                <RowDefinition Height="0,150*" />
-                <RowDefinition Height="0,125*" />
+                <RowDefinition Height="0,425*" />
                 <RowDefinition Height="0,275*" />
-
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Score" Foreground="White" HorizontalAlignment="Center" FontSize="25" />
             <TextBlock Grid.Row="0" Foreground="White" x:Name="score"  FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <TextBlock Grid.Row="1" Foreground="White" Text="Level" HorizontalAlignment="Center" FontSize="25" />
-            <TextBlock Grid.Row="0" Foreground="White" x:Name="level"  FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Foreground="White" x:Name="level"  FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            
+            
 
-            <TextBlock Grid.Row="2" Foreground="White" Text="Player" HorizontalAlignment="Center" FontSize="25" />
-            <TextBlock Grid.Row="2" Foreground="White" x:Name="nicknameLabel" TextWrapping="Wrap" Text="sh1" TextAlignment="Center" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center" Height="60" Margin="10,33.4,10.2,9.8" Width="135"/>
 
-            <TextBlock Grid.Row="3" Foreground="White" Text="Record" HorizontalAlignment="Center" FontSize="25" />
-            <Label Grid.Row="3" Foreground="White" x:Name="recordLabel" Content="0" HorizontalContentAlignment="Center" FontSize="35" VerticalContentAlignment="Center"/>
 
             <!--  <TextBlock Grid.Row="4" Foreground="White" TextWrapping="Wrap" Text="communication with developer" TextAlignment="Center" FontSize="15" /> -->
             
@@ -148,7 +142,7 @@
                     </Grid.RowDefinitions>
                 </Grid>
                 <TextBlock Text="Timer" Foreground="White" HorizontalAlignment="Center"></TextBlock>
-                <Label x:Name="timerLabel" Foreground="White" Content="0" HorizontalContentAlignment="Center" FontSize="35" VerticalContentAlignment="Center"/>
+                <TextBlock  x:Name="timer" Foreground="White" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center"/>
 
 
             </StackPanel>
