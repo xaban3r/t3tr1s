@@ -25,7 +25,7 @@ namespace t3tr1s
         private List<List<Rectangle>> rectangles = new List<List<Rectangle>>(Game.Columns);
         private List<List<Rectangle>> nextRectangles = new List<List<Rectangle>>(nextAndHoldGridSize);
         private List<List<Rectangle>> holdRectangles = new List<List<Rectangle>>(nextAndHoldGridSize);
-        private DispatcherTimer Timer = new DispatcherTimer();
+        Stopwatch Timer = new Stopwatch();
 
 
         public MainWindow()
@@ -35,12 +35,12 @@ namespace t3tr1s
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            GridCreate();;
+            GridCreate();
         }
 
         private void GridCreate()
         {
-            for (int i = 0; i<Game.Columns; i++)
+            for (int i = 0; i < Game.Columns; i++)
             {
                 mainGrid.ColumnDefinitions.Add(new ColumnDefinition());
             }
@@ -110,11 +110,12 @@ namespace t3tr1s
             level.Text = "0";
             game = null;
             game = new Game();
- 
+
             game.StartTheGame();
             DrawingTheGame();
             game.ThreadMoveDown += gameThread;
-            DispatcherTimer();
+            Timer.Restart();
+            StopWatchTimer();
         }
 
         void gameThread()
@@ -122,6 +123,7 @@ namespace t3tr1s
             Dispatcher.Invoke(() =>
             {
                 KeyDownMethod(Key.Down);
+                StopWatchTimer();
             });
         }
 
@@ -186,6 +188,7 @@ namespace t3tr1s
             score.Text = game.Score.ToString();
             DrawingTheGame();
             level.Text = game.Lvl.ToString();
+            
         }
 
         private void DrawNext()
@@ -205,30 +208,33 @@ namespace t3tr1s
             }
         }
 
-        private void DispatcherTimer()
+        private void StopWatchTimer()
         {
-            Timer.Interval = TimeSpan.FromMilliseconds(1);
-            Timer.Tick += Timer_Tick;
-            Timer.Start();
+            TimeSpan ts = Timer.Elapsed;
+            if (ts.Minutes > 0)
+                timer.Text = ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
+            else
+                timer.Text = ts.Seconds.ToString();
         }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            timer.Text = DateTime.Now.ToString("mm:ss.fff");
-        }
-
         /*===========================================================================================*/
         private void StartTheGame_Click(object sender, RoutedEventArgs e)
         {
-            NewGame();
+            if (game != null) game.EndGame();
+                NewGame();
         }
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
             //maybe focus
-            if (game.isPause) 
+            if (game.isPause)
+            {
                 game.isPause = false;
+                Timer.Start();
+            }
             else
+            {
                 game.isPause = true;
+                Timer.Stop();
+            }
         }
         private void vkButton_Click(object sender, RoutedEventArgs e)
         {

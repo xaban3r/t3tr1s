@@ -42,13 +42,15 @@ namespace t3tr1s
                     thread.Abort();
                 if (!isPause)
                     ThreadMoveDown?.Invoke(); //if (ThreadMoveDown != null) { ThreadMoveDown(); }
-                   
                 Thread.Sleep(timeout);
             }
         }
 
         public void StartTheGame()
         {
+
+            // if (!isEndGame && thread != null) thread.Abort();
+            //ThreadMoveDown = null;
             AddNewFigure();
             thread = new Thread(ThMoveDown)
             {
@@ -167,7 +169,6 @@ namespace t3tr1s
         }
 
 
-
         /*=========MOVES=========*/
 
         public void RightMove()
@@ -199,6 +200,7 @@ namespace t3tr1s
 
         public void EndGame()
         {
+
             thread.Abort();
         }
     }
