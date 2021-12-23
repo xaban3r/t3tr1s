@@ -44,7 +44,8 @@
             <ColumnDefinition Width="0,350*" />
             <ColumnDefinition Width="0,200*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        
+        <DockPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Gray">
             <StackPanel Margin="0,2,2,2" DockPanel.Dock="Top" Orientation="Horizontal">
                 <!--TextBlock Name="txtLabel" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock-->
             </StackPanel>
@@ -56,29 +57,31 @@
         </DockPanel >
         <Grid Grid.Column="0" Margin="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0,125*"/>
-                <RowDefinition Height="0,125*" />
-                <RowDefinition Height="0,550*" />
-                <RowDefinition Height="0,150*" />
+                <RowDefinition Height="0,100*"/>
+                <RowDefinition Height="0,100*" />
+                <RowDefinition Height="0,500*" />
+                <RowDefinition Height="0,120*" />
             </Grid.RowDefinitions>
+            <!-- 
+            <Border BorderBrush="Blue" BorderThickness="3" Grid.Column="0" Grid.Row="0"/> -->
+
+            <!-- 
+            <Border BorderBrush="Blue" BorderThickness="3" Grid.Column="0" Grid.Row="1"/> -->
+            <!-- 
+            <Border BorderBrush="Blue" BorderThickness="3" Grid.Column="0" Grid.Row="2"/> -->
+            <!-- 
+            <Border BorderBrush="Blue" BorderThickness="3" Grid.Column="0" Grid.Row="3"/> -->
             <TextBlock Grid.Row="0" Text="Score" Foreground="White" HorizontalAlignment="Center" FontSize="25" />
-            <TextBlock Grid.Row="0" Foreground="White" x:Name="score"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+            <TextBlock Grid.Row="0" Foreground="White" x:Name="score"  FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             <TextBlock Grid.Row="1" Foreground="White" Text="Level" HorizontalAlignment="Center" FontSize="25" />
-            <TextBlock Grid.Row="1" Foreground="White" x:Name="level"  FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            
-            
+            <TextBlock Grid.Row="1" Foreground="White" x:Name="level"  FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <ListView x:Name="listView" Grid.Column="0" Grid.Row="2" Background="#01FFFFFF"/>
 
-
-
-            <!--  <TextBlock Grid.Row="4" Foreground="White" TextWrapping="Wrap" Text="communication with developer" TextAlignment="Center" FontSize="15" /> -->
-            
-            <StackPanel Grid.Row="5">
+            <StackPanel Grid.Row="3">
                 <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">
                     <Button x:Name="vkButton" Style="{DynamicResource RoundButton}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="vkButton_Click" Width="50" Height="50" Margin="0,0,10,0">
                         <fa:ImageAwesome Icon="Vk"  Width="45" Height="45" Foreground="Blue"  Margin="0,0,0,0"  />
-                      
-                        <!--Margin="10,0,15,0"-->
+
                     </Button>
                     
                     <Button x:Name="gitHubButton" Style="{DynamicResource RoundButton}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="gitHubButton_Click" Width="50" Height="50"  Margin="0,0,0,0">
@@ -100,11 +103,11 @@
                 <RowDefinition Height="0,125*" />
                 <RowDefinition Height="0,125*" />
             </Grid.RowDefinitions>
-            <!--555555555555555555555555 -->
+
             <StackPanel>
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type TextBlock}">
-                        <!-- Template -->
+
                         <Setter Property="FontSize">
                             <Setter.Value>20</Setter.Value>
                         </Setter>

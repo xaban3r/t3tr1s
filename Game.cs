@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -30,7 +31,8 @@ namespace t3tr1s
         private int timeout = 1000;
         public const int Rows = 20;
         public const int Columns = 10;
-
+        public static readonly string path = Path.Combine(Environment.CurrentDirectory, "statistic.txt");
+        //public string GetPath { get { return path; } }
         private List<FieldElement> AllEllements = new List<FieldElement>();
         public List<FieldElement> GetAllEllements() { return AllEllements; }
 
@@ -39,7 +41,7 @@ namespace t3tr1s
             while (true)
             {
                 if (isEndGame)
-                    thread.Abort();
+                    EndGame(); //  thread.Abort();
                 if (!isPause)
                     ThreadMoveDown?.Invoke(); //if (ThreadMoveDown != null) { ThreadMoveDown(); }
                 Thread.Sleep(timeout);
@@ -197,11 +199,24 @@ namespace t3tr1s
             if (isPause) return;
             figure.Rotate(GetAllEllements());
         }
+        /*=========MOVES=========*/
+
 
         public void EndGame()
         {
-
+            SaveStat();
             thread.Abort();
         }
+
+        private void SaveStat()
+        {
+            using (StreamWriter sw = new StreamWriter(path, true))
+            {
+                sw.Write($"Lvl - {Lvl}; Score - {Score}; Time - {MainWindow.statTime}\n");
+                sw.Close();
+            }
+        }
+
+     
     }
 }

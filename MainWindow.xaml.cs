@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Windows.Threading;
+using System.IO;
 
 namespace t3tr1s
 {
@@ -25,8 +26,10 @@ namespace t3tr1s
         private List<List<Rectangle>> rectangles = new List<List<Rectangle>>(Game.Columns);
         private List<List<Rectangle>> nextRectangles = new List<List<Rectangle>>(nextAndHoldGridSize);
         private List<List<Rectangle>> holdRectangles = new List<List<Rectangle>>(nextAndHoldGridSize);
+        public static string statTime;
         Stopwatch Timer = new Stopwatch();
-
+        private static string[] allStatLines;
+        public string[] GetAllStatLines { get { return allStatLines; } }
 
         public MainWindow()
         {
@@ -36,6 +39,7 @@ namespace t3tr1s
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             GridCreate();
+            GetStat();
         }
 
         private void GridCreate()
@@ -106,6 +110,7 @@ namespace t3tr1s
 
         private void NewGame()
         {
+            GetStat();
             score.Text = "0";
             level.Text = "0";
             game = null;
@@ -211,16 +216,36 @@ namespace t3tr1s
         private void StopWatchTimer()
         {
             TimeSpan ts = Timer.Elapsed;
-            if (ts.Minutes > 0)
                 timer.Text = ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
-            else
-                timer.Text = ts.Seconds.ToString();
+            statTime = timer.Text;
         }
+
+
+       public void GetStat()
+        {
+            if (!File.Exists(Game.path))
+            {
+                File.Create(Game.path);
+            }
+            else
+            {
+                allStatLines = File.ReadAllLines(Game.path);
+                listView.Items.Clear();
+
+                for (int i = allStatLines.Length - 1; i > 0; i--)
+                {
+                    listView.Items.Add(allStatLines[i]);
+                }
+            }
+        }
+       
+        
+
         /*===========================================================================================*/
         private void StartTheGame_Click(object sender, RoutedEventArgs e)
         {
             if (game != null) game.EndGame();
-                NewGame();
+            NewGame();
         }
         private void Pause_Click(object sender, RoutedEventArgs e)
         {
