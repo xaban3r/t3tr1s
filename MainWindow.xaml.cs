@@ -220,8 +220,7 @@ namespace t3tr1s
             statTime = timer.Text;
         }
 
-
-       public void GetStat()
+        public void GetStat()
         {
             if (!File.Exists(Game.path))
             {
@@ -230,18 +229,14 @@ namespace t3tr1s
             else
             {
                 allStatLines = File.ReadAllLines(Game.path);
-                listView.Items.Clear();
-
+                results.Text = String.Empty;
                 for (int i = allStatLines.Length - 1; i > 0; i--)
                 {
-                    listView.Items.Add(allStatLines[i]);
+                    results.Text += allStatLines[i] + "\n";
                 }
             }
         }
-       
-        
-
-        /*===========================================================================================*/
+/*===========================================================================================*/
         private void StartTheGame_Click(object sender, RoutedEventArgs e)
         {
             if (game != null) game.EndGame();
@@ -275,7 +270,9 @@ namespace t3tr1s
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (game != null) //фиксит вроде норм
             game.EndGame();
+            
         }
     }
 }

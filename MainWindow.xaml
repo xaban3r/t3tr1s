@@ -9,8 +9,7 @@
         Title="MainWindow" Height="720" Width="800"
         Loaded="Window_Loaded"
         KeyDown="Window_KeyDown"
-        Closing="Window_Closing"
-        >
+        Closing="Window_Closing">
 
     <Window.Resources>
         <Style TargetType="Button" x:Key="RoundButton">
@@ -47,8 +46,7 @@
         
         <DockPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Gray">
             <StackPanel Margin="0,2,2,2" DockPanel.Dock="Top" Orientation="Horizontal">
-                <!--TextBlock Name="txtLabel" Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock-->
-            </StackPanel>
+            </StackPanel> 
             <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid  DockPanel.Dock="Top" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="mainGrid" ShowGridLines="False" Background="Black"  >
 
@@ -59,25 +57,18 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0,100*"/>
                 <RowDefinition Height="0,100*" />
-                <RowDefinition Height="0,500*" />
-                <RowDefinition Height="0,120*" />
+                <RowDefinition Height="0,50*" />
+                <RowDefinition Height="0,400*" />
+                <RowDefinition Height="0,125*" />
             </Grid.RowDefinitions>
-            <!-- 
-            <Border BorderBrush="Blue" BorderThickness="3" Grid.Column="0" Grid.Row="0"/> -->
+            <TextBlock Grid.Row="0" Text="Score" Foreground="White" FontFamily="MS UI Gothic" HorizontalAlignment="Center" FontSize="20" />
+            <TextBlock Grid.Row="0" Foreground="White" x:Name="score" FontFamily="MS UI Gothic" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="1" Foreground="White" Text="Level" FontFamily="MS UI Gothic" HorizontalAlignment="Center" FontSize="20" />
+            <TextBlock Grid.Row="1" Foreground="White" x:Name="level" FontFamily="MS UI Gothic" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Grid.Row="2" Foreground="White" FontFamily="MS UI Gothic" Text="Last Games" HorizontalAlignment="Center" FontSize="20" />
+            <TextBlock Grid.Row="3" Foreground="White" x:Name="results" Width="180" Margin="10,0,10,0" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="MS UI Gothic"/>
 
-            <!-- 
-            <Border BorderBrush="Blue" BorderThickness="3" Grid.Column="0" Grid.Row="1"/> -->
-            <!-- 
-            <Border BorderBrush="Blue" BorderThickness="3" Grid.Column="0" Grid.Row="2"/> -->
-            <!-- 
-            <Border BorderBrush="Blue" BorderThickness="3" Grid.Column="0" Grid.Row="3"/> -->
-            <TextBlock Grid.Row="0" Text="Score" Foreground="White" HorizontalAlignment="Center" FontSize="25" />
-            <TextBlock Grid.Row="0" Foreground="White" x:Name="score"  FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <TextBlock Grid.Row="1" Foreground="White" Text="Level" HorizontalAlignment="Center" FontSize="25" />
-            <TextBlock Grid.Row="1" Foreground="White" x:Name="level"  FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <ListView x:Name="listView" Grid.Column="0" Grid.Row="2" Background="#01FFFFFF"/>
-
-            <StackPanel Grid.Row="3">
+                <StackPanel Grid.Row="4">
                 <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">
                     <Button x:Name="vkButton" Style="{DynamicResource RoundButton}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Click="vkButton_Click" Width="50" Height="50" Margin="0,0,10,0">
                         <fa:ImageAwesome Icon="Vk"  Width="45" Height="45" Foreground="Blue"  Margin="0,0,0,0"  />
@@ -101,21 +92,11 @@
                 <RowDefinition Height="0,675*"/>
                 <RowDefinition Height="0,125*" />
                 <RowDefinition Height="0,125*" />
-                <RowDefinition Height="0,125*" />
             </Grid.RowDefinitions>
 
             <StackPanel>
-                <StackPanel.Resources>
-                    <Style TargetType="{x:Type TextBlock}">
-
-                        <Setter Property="FontSize">
-                            <Setter.Value>20</Setter.Value>
-                        </Setter>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                    </Style>
-                </StackPanel.Resources>
-                <TextBlock Text="NEXT" Foreground="White" HorizontalAlignment="Center"></TextBlock>
-                <Grid  Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowGridLines="False" x:Name="gridNext" Background="Black"  >
+                <TextBlock Text="NEXT" Foreground="White"  FontFamily="MS UI Gothic"  FontSize="20" HorizontalAlignment="Center"/>
+                <Grid  Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  ShowGridLines="False" x:Name="gridNext" Background="Black"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -129,7 +110,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                 </Grid>
-                <TextBlock Text="HOLD &lt;SHIFT&gt;" Foreground="White" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Text="HOLD &lt;SHIFT&gt;" Foreground="White" FontFamily="MS UI Gothic" FontSize="20"  HorizontalAlignment="Center"></TextBlock>
                 <Grid  Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowGridLines="False" x:Name="gridHold" Background="Black"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -144,19 +125,18 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                 </Grid>
-                <TextBlock Text="Timer" Foreground="White" HorizontalAlignment="Center"></TextBlock>
-                <TextBlock  x:Name="timer" Foreground="White" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center"/>
+                <TextBlock Text="Timer"  FontFamily="MS UI Gothic" FontSize="25" Foreground="White" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock  x:Name="timer" Foreground="White"  FontFamily="MS UI Gothic" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center"/>
 
 
             </StackPanel>
 
-            <Button Style="{DynamicResource RightSideButton}" Focusable="False" Grid.Row="3" Content="Information"></Button>
-            <!-- Click="Button_Click" -->
-            <Button Style="{DynamicResource RightSideButton}" Focusable="False" Name="buttonPause" Content="Pause" Grid.Row="2" Click="Pause_Click"></Button>
-            <!--Click="btnPause_Click" -->
-            <Button Style="{DynamicResource RightSideButton}" Grid.Row="1" Name="buttonStartGame" Click="StartTheGame_Click"  FontWeight="Bold" FontSize="16" Focusable="False" Content="Start the Game"></Button>
-            <!--Click="btnNewGame_Click" -->
-
+            <!-- <Button Style="{DynamicResource RightSideButton}" Focusable="False" Grid.Row="3" FontFamily="MS UI Gothic" FontSize="20" Content="Information"></Button> -->
+       
+            <Button Style="{DynamicResource RightSideButton}" Focusable="False" Name="buttonPause" FontFamily="MS UI Gothic" FontSize="20" Content="Pause" Grid.Row="2" Click="Pause_Click"></Button>
+ 
+            <Button Style="{DynamicResource RightSideButton}" Grid.Row="1" Name="buttonStartGame" FontFamily="MS UI Gothic"  Click="StartTheGame_Click"  FontWeight="Bold" FontSize="20" Focusable="False" Content="Start the Game"></Button>
+          
         </Grid>
     </Grid>
 </Window>

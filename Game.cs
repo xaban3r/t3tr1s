@@ -204,6 +204,7 @@ namespace t3tr1s
 
         public void EndGame()
         {
+            
             SaveStat();
             thread.Abort();
         }
