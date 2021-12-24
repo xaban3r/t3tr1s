@@ -44,7 +44,7 @@
             <ColumnDefinition Width="0,200*"/>
         </Grid.ColumnDefinitions>
         
-        <DockPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Gray">
+        <DockPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Gray" Opacity="0.70">
             <StackPanel Margin="0,2,2,2" DockPanel.Dock="Top" Orientation="Horizontal">
             </StackPanel> 
             <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -66,7 +66,7 @@
             <TextBlock Grid.Row="1" Foreground="White" Text="Level" FontFamily="MS UI Gothic" HorizontalAlignment="Center" FontSize="20" />
             <TextBlock Grid.Row="1" Foreground="White" x:Name="level" FontFamily="MS UI Gothic" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <TextBlock Grid.Row="2" Foreground="White" FontFamily="MS UI Gothic" Text="Last Games" HorizontalAlignment="Center" FontSize="20" />
-            <TextBlock Grid.Row="3" Foreground="White" x:Name="results" Width="180" Margin="10,0,10,0" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="MS UI Gothic"/>
+            <TextBlock Grid.Row="3" Foreground="White" x:Name="results" Width="180" Margin="10,0,10,0" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="MS UI Gothic" FontWeight="Bold"/>
 
                 <StackPanel Grid.Row="4">
                 <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">
@@ -96,7 +96,7 @@
 
             <StackPanel>
                 <TextBlock Text="NEXT" Foreground="White"  FontFamily="MS UI Gothic"  FontSize="20" HorizontalAlignment="Center"/>
-                <Grid  Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  ShowGridLines="False" x:Name="gridNext" Background="Black"  >
+                <Grid Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  ShowGridLines="False" x:Name="gridNext" Background="Black" Opacity="0.75"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -110,21 +110,8 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                 </Grid>
-                <TextBlock Text="HOLD &lt;SHIFT&gt;" Foreground="White" FontFamily="MS UI Gothic" FontSize="20"  HorizontalAlignment="Center"></TextBlock>
-                <Grid  Width="150" Height="150" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" ShowGridLines="False" x:Name="gridHold" Background="Black"  >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="37.6"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                </Grid>
+                
+                
                 <TextBlock Text="Timer"  FontFamily="MS UI Gothic" FontSize="25" Foreground="White" HorizontalAlignment="Center"></TextBlock>
                 <TextBlock  x:Name="timer" Foreground="White"  FontFamily="MS UI Gothic" HorizontalAlignment="Center" FontSize="25" VerticalAlignment="Center"/>
 

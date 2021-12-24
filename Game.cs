@@ -12,7 +12,6 @@ namespace t3tr1s
 {
     class Game
     {
-
         public int Score { get; private set; } = 0;
         public int Lvl { get; private set; } = 0;
         public bool isEndGame { get; private set; } = false;
@@ -21,18 +20,14 @@ namespace t3tr1s
         private Thread thread;
         private Figure figure;
         private Figure nextFigure;
-        private Figure holdFigure;
         public Figure GetFigure { get { return figure; } }
         public Figure GetNextFigure { get { return nextFigure; } }
-        public Figure GetHoldFigure { get { return holdFigure; } }
-
         public delegate void MoveDown();
         public event MoveDown ThreadMoveDown;
         private int timeout = 1000;
         public const int Rows = 20;
         public const int Columns = 10;
         public static readonly string path = Path.Combine(Environment.CurrentDirectory, "statistic.txt");
-        //public string GetPath { get { return path; } }
         private List<FieldElement> AllEllements = new List<FieldElement>();
         public List<FieldElement> GetAllEllements() { return AllEllements; }
 
@@ -41,7 +36,7 @@ namespace t3tr1s
             while (true)
             {
                 if (isEndGame)
-                    EndGame(); //  thread.Abort();
+                    thread.Abort();
                 if (!isPause)
                     ThreadMoveDown?.Invoke(); //if (ThreadMoveDown != null) { ThreadMoveDown(); }
                 Thread.Sleep(timeout);
@@ -170,9 +165,7 @@ namespace t3tr1s
             timeout = (int)(timeout * 0.7F);
         }
 
-
         /*=========MOVES=========*/
-
         public void RightMove()
         {
             if (isPause)
@@ -201,14 +194,11 @@ namespace t3tr1s
         }
         /*=========MOVES=========*/
 
-
         public void EndGame()
         {
-            
             SaveStat();
             thread.Abort();
         }
-
         private void SaveStat()
         {
             using (StreamWriter sw = new StreamWriter(path, true))
@@ -218,6 +208,5 @@ namespace t3tr1s
             }
         }
 
-     
     }
 }

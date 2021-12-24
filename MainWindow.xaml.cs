@@ -20,12 +20,11 @@ namespace t3tr1s
 {
     public partial class MainWindow : Window
     {
-        const int nextAndHoldGridSize = 4;
+        const int nextGridSize = 4;
         private Game game;
         private Rectangle rectangle = new Rectangle();
         private List<List<Rectangle>> rectangles = new List<List<Rectangle>>(Game.Columns);
-        private List<List<Rectangle>> nextRectangles = new List<List<Rectangle>>(nextAndHoldGridSize);
-        private List<List<Rectangle>> holdRectangles = new List<List<Rectangle>>(nextAndHoldGridSize);
+        private List<List<Rectangle>> nextRectangles = new List<List<Rectangle>>(nextGridSize);
         public static string statTime;
         Stopwatch Timer = new Stopwatch();
         private static string[] allStatLines;
@@ -71,10 +70,10 @@ namespace t3tr1s
                 }
             }
 
-            for (int i = 0; i < nextAndHoldGridSize; i++)
+            for (int i = 0; i < nextGridSize; i++)
             {
                 nextRectangles.Add(new List<Rectangle>());
-                for (int j = 0; j < nextAndHoldGridSize; j++)
+                for (int j = 0; j < nextGridSize; j++)
                 {
                     rectangle = new Rectangle
                     {                                                               // Размер содержимого изменяется, чтобы заполнить размеры назначения.
@@ -88,24 +87,6 @@ namespace t3tr1s
                     nextRectangles[i].Add(rectangle);
                 }
             }
-
-            for (int i = 0; i < nextAndHoldGridSize; i++)
-            {
-                holdRectangles.Add(new List<Rectangle>());
-                for (int j = 0; j < nextAndHoldGridSize; j++)
-                {
-                    rectangle = new Rectangle
-                    {                                                               // Размер содержимого изменяется, чтобы заполнить размеры назначения.
-                        Stretch = Stretch.Fill                                      // Соотношение сторон не сохраняется.
-                    };
-                    rectangle.Margin = new Thickness(1);
-                    rectangle.Fill = new SolidColorBrush(Colors.White);
-                    Grid.SetColumn(rectangle, j);
-                    Grid.SetRow(rectangle, i);
-                    gridHold.Children.Add(rectangle);
-                    holdRectangles[i].Add(rectangle);
-                }
-            }
         }
 
         private void NewGame()
@@ -115,7 +96,6 @@ namespace t3tr1s
             level.Text = "0";
             game = null;
             game = new Game();
-
             game.StartTheGame();
             DrawingTheGame();
             game.ThreadMoveDown += gameThread;
@@ -136,7 +116,6 @@ namespace t3tr1s
         {
             rectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.White)));
             nextRectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.White)));
-            holdRectangles.ForEach(row => row.ForEach(col => col.Fill = new SolidColorBrush(Colors.White)));
             game.GetAllEllements().ForEach(el => { DrawOne(el.x, el.y, el.color); });
             if (!game.isEndGame)
             {
