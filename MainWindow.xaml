@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:t3tr1s"
         xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="800"
+        Title="TETRIS" Height="720" Width="800"
         Loaded="Window_Loaded"
         KeyDown="Window_KeyDown"
-        Closing="Window_Closing">
+        Closing="Window_Closing"
+        ResizeMode="NoResize">
 
     <Window.Resources>
         <Style TargetType="Button" x:Key="RoundButton">
@@ -44,7 +45,7 @@
             <ColumnDefinition Width="0,200*"/>
         </Grid.ColumnDefinitions>
         
-        <DockPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Gray" Opacity="0.70">
+        <DockPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Gray" Opacity="0.75">
             <StackPanel Margin="0,2,2,2" DockPanel.Dock="Top" Orientation="Horizontal">
             </StackPanel> 
             <DockPanel DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">

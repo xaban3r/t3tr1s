@@ -103,7 +103,7 @@ namespace t3tr1s
             StopWatchTimer();
         }
 
-        void gameThread()
+        private void gameThread()
         {
             Dispatcher.Invoke(() =>
             {
@@ -195,7 +195,7 @@ namespace t3tr1s
         private void StopWatchTimer()
         {
             TimeSpan ts = Timer.Elapsed;
-                timer.Text = ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
+            timer.Text = ts.Minutes.ToString() + ":" + ts.Seconds.ToString();
             statTime = timer.Text;
         }
 
@@ -249,7 +249,7 @@ namespace t3tr1s
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (game != null) //фиксит вроде норм
+            if (game != null) 
             game.EndGame();
             
         }

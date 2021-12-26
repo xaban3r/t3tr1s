@@ -207,6 +207,5 @@ namespace t3tr1s
                 sw.Close();
             }
         }
-
     }
 }

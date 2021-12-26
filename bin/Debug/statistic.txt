@@ -1,8 +1,9 @@
-Lvl - 0; Score - 0; Time - 3
-Lvl - 0; Score - 0; Time - 2
 Lvl - 2; Score - 3900; Time - 5:49
-Lvl - 0; Score - 300; Time - 0:48
-Lvl - 0; Score - 200; Time - 2:5
 Lvl - 1; Score - 2300; Time - 3:46
 Lvl - 3; Score - 5600; Time - 6:50
-Lvl - 2; Score - 3900; Time - 5:49
+Lvl - 1; Score - 1700; Time - 2:23
+Lvl - 0; Score - 1400; Time - 3:14
+Lvl - 1; Score - 2000; Time - 3:39
+Lvl - 5; Score - 7900; Time - 9:11
+Lvl - 0; Score - 1000; Time - 1:6
+Lvl - 2; Score - 3300; Time - 3:54

@@ -11,14 +11,14 @@ namespace t3tr1s
     {
         private List<FieldElement> elements  = new List<FieldElement>();              
         public List<FieldElement> Elements { get { return elements; } }             // свойство
-        private readonly List<Color> color = new List<Color> { Colors.Red, Colors.Yellow, Colors.Green, Colors.Blue };
-        private readonly Random random = new Random();
-        public void SetRandomColor()
+     //   private readonly List<Color> color = new List<Color> { Colors.Red, Colors.Yellow, Colors.Green, Colors.Blue };
+      //  private readonly Random random = new Random();
+      /*  public void SetRandomColor()
         {
             int i = random.Next(0, color.Count);
             Color col = color[i];
             elements.ForEach(element => element.color = col);                         // читается как переходит в 
-        }
+        }*/
         public void SetColor(Color color)
         {
             elements.ForEach(element => element.color = color);
@@ -50,7 +50,6 @@ namespace t3tr1s
             }
             return move;
         }
-
         public bool DownMove(List<FieldElement> listOfFallenElements)
         {
             if (!elements.Exists(element => (element.y + 1) == Game.Rows))
@@ -69,8 +68,6 @@ namespace t3tr1s
 
 
         }
-
-
         public bool Rotate(List<FieldElement> listOfElements)
         {
             List<FieldElement> testElements = new List<FieldElement>(elements.Count());
